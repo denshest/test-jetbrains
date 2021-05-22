@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
@@ -75,10 +76,10 @@ module.exports = (env, argv) => {
     plugins: [
       new CopyPlugin({
         patterns: [
-          // {
-          //   from: path.resolve(__dirname, 'src', 'public', 'images'),
-          //   to: path.resolve(__dirname, 'build')
-          // },
+          {
+            from: path.resolve(__dirname, 'src', 'public', 'images'),
+            to: path.resolve(__dirname, 'build'),
+          },
           {
             from: path.resolve(__dirname, 'src', 'public', 'data'),
             to: path.resolve(__dirname, 'build', 'data'),
@@ -93,6 +94,9 @@ module.exports = (env, argv) => {
         template: path.resolve(__dirname, 'src', 'public', 'index.html'),
       }),
       new ESLintPlugin(),
+      new StylelintPlugin({
+        fix: true,
+      }),
     ],
     resolve: {
       alias: {
