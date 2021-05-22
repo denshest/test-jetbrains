@@ -1,6 +1,6 @@
 .container {
   &_active {
-    background-color: rgba(39,40,44,.05);
+    background-color: rgba(39, 40, 44, .05);
 
     & > .link {
       font-weight: 600;
@@ -16,17 +16,17 @@
   position: relative;
   display: block;
   padding: 8px 0;
-  border-left: 32px solid transparent;
-  border-right: 32px solid transparent;
-  font-size: 14px;
   font-weight: 400;
+  font-size: 14px;
   line-height: 16px;
   text-decoration: none;
-  text-overflow: ellipsis;
+  border-right: 32px solid transparent;
+  border-left: 32px solid transparent;
   transition: background-color .2s ease;
+  text-overflow: ellipsis;
 
   &:hover {
-    background-color: rgba(39,40,44,.05);
+    background-color: rgba(39, 40, 44, .05);
     cursor: pointer;
   }
 }
