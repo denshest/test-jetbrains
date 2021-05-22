@@ -49,6 +49,7 @@ module.exports = (env, argv) => {
                 sourceMap: isDevelopment,
               },
             },
+            'postcss-loader',
             {
               loader: 'sass-loader',
               options: {
@@ -63,6 +64,7 @@ module.exports = (env, argv) => {
           use: [
             isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
+            'postcss-loader',
             {
               loader: 'sass-loader',
               options: {
