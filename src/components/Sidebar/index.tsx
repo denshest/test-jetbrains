@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Sidebar.module.scss';
 import Item from '@/components/Item';
 
@@ -11,8 +11,8 @@ const Sidebar: React.FC<SidebarPropsType> = ({ data }): JSX.Element => {
   const [anchors, setAnchors] = useState<any>(null);
 
   useEffect(() => {
-    setPages(Object.values(data.entities.pages))
-    setAnchors(Object.values(data.entities.anchors))
+    setPages(Object.values(data.entities.pages));
+    setAnchors(Object.values(data.entities.anchors));
   }, []);
 
   return (
@@ -24,6 +24,6 @@ const Sidebar: React.FC<SidebarPropsType> = ({ data }): JSX.Element => {
       </ul>
     </nav>
   );
-}
+};
 
 export default Sidebar;

@@ -15,10 +15,15 @@
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.0",
     "core-js": "^3.12.1",
     "css-loader": "^5.2.5",
+    "eslint": "^7.27.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-webpack-plugin": "^2.5.4",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "modern-css-reset": "^1.4.0",
@@ -33,7 +38,9 @@
   },
   "scripts": {
     "dev": "webpack serve --mode development --hot",
-    "build": "webpack --mode production --progress"
+    "build": "webpack --mode production --progress",
+    "eslint:lint": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
+    "eslint:fix": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore . --fix"
   },
   "dependencies": {
     "clsx": "^1.1.1",

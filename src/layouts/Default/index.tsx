@@ -10,6 +10,6 @@ const DefaultLayout: React.FC = ({ children }): JSX.Element => {
       </main>
     </>
   );
-}
+};
 
 export default DefaultLayout;

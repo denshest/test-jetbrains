@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Item.module.scss';
 import clsx from 'clsx';
 import ArrowIcon from '@/public/images/icons/arrow.svg';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type ItemPropsType = {
   id: string;
@@ -27,7 +27,7 @@ const Item: React.FC<ItemPropsType> = ({ id, pages, anchors }): JSX.Element => {
       {item && (
         <>
           <li onClick={() => (childPages.length || childAnchors.length) && setActive(!active)} className={clsx(styles.container, (active && childAnchors.length > 0) ? styles.container_active : '')}>
-            <Link to={item.id} className={styles.link} style={{paddingLeft: `${item.level * 16}px`}}>
+            <Link to={item.id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }}>
               { childPages.length > 0 && (
                 <ArrowIcon width={16} height={16} className={clsx(styles.arrow, active && styles.arrow_active)} />
               ) } { item.title }
@@ -36,7 +36,7 @@ const Item: React.FC<ItemPropsType> = ({ id, pages, anchors }): JSX.Element => {
               <ul className={styles.sublist}>
                 { childAnchors.map(anchor => (
                   <li key={anchor.id}>
-                    <Link to={anchor.id} className={styles.link} style={{paddingLeft: `${item.level * 16}px`}}>
+                    <Link to={anchor.id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }}>
                       { anchor.title }
                     </Link>
                   </li>
@@ -45,13 +45,14 @@ const Item: React.FC<ItemPropsType> = ({ id, pages, anchors }): JSX.Element => {
             ) }
           </li>
 
-          { active && childPages.map(child => (
-            <Item key={child.id} id={child.id} pages={pages} anchors={anchors} />
-          )) }
+          {
+            active && childPages.map(child => (
+              <Item key={child.id} id={child.id} pages={pages} anchors={anchors} />
+            )) }
         </>
       )}
     </>
   );
-}
+};
 
 export default Item;
