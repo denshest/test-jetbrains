@@ -1,14 +1,21 @@
-import React from 'react';
+import React  from 'react';
 import { useParams } from 'react-router-dom';
+import NotFound from '@/pages/NotFound';
 
-const Article: React.FC = (): JSX.Element => {
-  let { id } = useParams();
+type ArticlePropsType = {
+  page: any;
+};
+
+const Article: React.FC<ArticlePropsType> = ({ page }): JSX.Element => {
+  const { id } = useParams<{id: string}>();
+
+  if (!page) return <NotFound/>;
 
   return (
     <div>
       Page ID: { id }
     </div>
   );
-}
+};
 
 export default Article;

@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
@@ -10,7 +11,7 @@ module.exports = (env, argv) => {
     entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, './build'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     module: {
       rules: [
@@ -44,16 +45,16 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 modules: true,
-                sourceMap: isDevelopment
-              }
+                sourceMap: isDevelopment,
+              },
             },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: isDevelopment
-              }
-            }
-          ]
+                sourceMap: isDevelopment,
+              },
+            },
+          ],
         },
         {
           test: /\.s([ac])ss$/,
@@ -64,11 +65,11 @@ module.exports = (env, argv) => {
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: isDevelopment
-              }
-            }
-          ]
-        }
+                sourceMap: isDevelopment,
+              },
+            },
+          ],
+        },
       ],
     },
     plugins: [
@@ -80,17 +81,18 @@ module.exports = (env, argv) => {
           // },
           {
             from: path.resolve(__dirname, 'src', 'public', 'data'),
-            to: path.resolve(__dirname, 'build', 'data')
+            to: path.resolve(__dirname, 'build', 'data'),
           },
         ],
       }),
       new MiniCssExtractPlugin({
         filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'public', 'index.html'),
       }),
+      new ESLintPlugin(),
     ],
     resolve: {
       alias: {
@@ -102,6 +104,6 @@ module.exports = (env, argv) => {
       contentBase: path.resolve(__dirname, './build'),
       port: 3000,
       historyApiFallback: true,
-    }
-  }
-}
+    },
+  };
+};
