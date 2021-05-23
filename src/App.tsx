@@ -8,17 +8,15 @@ import Article from './pages/Article';
 import NotFound from '@/pages/NotFound';
 
 const App: React.FC = (): JSX.Element => {
-  const [data, setData] = useState(null);
-  const [pages, setPages] = useState<[] | null>(null);
+  const [data, setData] = useState<ITocData | null>(null);
 
   useEffect(() => {
     let isFetching = false;
     const fetchData = async () => {
       const response = await fetch('/data/HelpTOC.json');
-      const result = await response.json();
+      const result: ITocData = await response.json();
       if (!isFetching) {
         setData(result);
-        setPages(Object.values(result.entities.pages));
       }
     };
 
@@ -38,11 +36,9 @@ const App: React.FC = (): JSX.Element => {
         )}
         <div>
           <Switch>
-            { pages && (
-              <Route path="/:id" render={({ match }) => (
-                <Article page={pages.find(item => item.id === match.params.id)} />
-              )}/>
-            ) }
+            <Route path="/:id" render={({ match }) => (
+              <Article page={data?.entities.pages[match.params.id]} />
+            )}/>
             <Route exact path="/">
               <Home />
             </Route>
