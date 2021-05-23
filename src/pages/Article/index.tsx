@@ -6,12 +6,12 @@ type ArticlePropsType = {
 };
 
 const Article: React.FC<ArticlePropsType> = ({ page }): JSX.Element => {
-  if (!page) return <NotFound/>;
+  // if (!page) return <NotFound/>;
 
   return (
     <div>
       <h1>
-        { page.title }
+        { page?.title }
       </h1>
     </div>
   );

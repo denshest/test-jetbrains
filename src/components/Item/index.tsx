@@ -2,42 +2,44 @@ import React, { useEffect, useState } from 'react';
 import styles from './Item.module.scss';
 import clsx from 'clsx';
 import ArrowIcon from '@/public/images/icons/arrow.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 type ItemPropsType = {
   id: string;
-  pages: any[];
-  anchors: any[];
+  data: ITocData;
 }
 
-const Item: React.FC<ItemPropsType> = ({ id, pages, anchors }): JSX.Element => {
-  const [item, setItem] = useState(null);
-  const [active, setActive] = useState(false);
-  const [childPages, setChildPages] = useState<any>([]);
-  const [childAnchors, setChildAnchors] = useState<any>([]);
+const Item: React.FC<ItemPropsType> = ({ data, id }): JSX.Element => {
+  const [item, setItem] = useState<ITocPage | null>(null);
+  const [active, setActive] = useState<boolean>(false);
+
+  const
+    location = useLocation(),
+    { pathname } = location,
+    routerId = pathname.split('/')[1]
+  ;
 
   useEffect(() => {
-    setItem(pages.find(item => item.id === id));
-    setChildPages(pages.filter(item => item.parentId === id));
-    setChildAnchors(anchors.filter(item => item.parentId === id));
+    setItem(data.entities.pages[id]);
+    console.log(routerId);
   }, [id]);
 
   return (
     <>
       {item && (
         <>
-          <li onClick={() => (childPages.length || childAnchors.length) && setActive(!active)} className={clsx(styles.container, (active && childAnchors.length > 0) ? styles.container_active : '')}>
-            <Link to={item.id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }}>
-              { childPages.length > 0 && (
+          <li className={clsx(styles.container, (active && item?.anchors) ? styles.container_active : '')}>
+            <Link to={item.id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }} onClick={() => (item.pages || item.anchors) && setActive(!active)}>
+              { item.pages && (
                 <ArrowIcon width={16} height={16} className={clsx(styles.arrow, active && styles.arrow_active)} />
               ) } { item.title }
             </Link>
-            { active && childAnchors.length > 0 && (
+            { active && item.anchors && (
               <ul className={styles.sublist}>
-                { childAnchors.map(anchor => (
-                  <li key={anchor.id}>
-                    <Link to={anchor.id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }}>
-                      { anchor.title }
+                { item.anchors.map(id => (
+                  <li key={id}>
+                    <Link to={id} className={styles.link} style={{ paddingLeft: `${item.level * 16}px` }}>
+                      { data.entities.anchors[id].title }
                     </Link>
                   </li>
                 )) }
@@ -46,8 +48,8 @@ const Item: React.FC<ItemPropsType> = ({ id, pages, anchors }): JSX.Element => {
           </li>
 
           {
-            active && childPages.map(child => (
-              <Item key={child.id} id={child.id} pages={pages} anchors={anchors} />
+            active && item.pages?.map(id => (
+              <Item key={id} id={id} data={data} />
             )) }
         </>
       )}
