@@ -23,7 +23,7 @@ const TocDataProvider: React.FC = (props) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
   useEffect(() => {
-    fetch('/api/v1/help_toc')
+    fetch('/api/v1/help_toc/')
       .then(response => {
         if (!response.ok) throw new Error(response.statusText);
 
