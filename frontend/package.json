@@ -49,10 +49,10 @@
     "build": "webpack --mode production --progress",
     "eslint:lint": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
     "eslint:fix": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore . --fix",
-    "stylelint:lint": "stylelint './src/**/*.scss' -q --config ./stylelint.config.js",
-    "stylelint:fix": "stylelint --fix './src/**/*.scss' -q --config ./stylelint.config.js",
+    "stylelint:lint": "stylelint './src/**/*.scss' -q --config stylelint.config.js",
+    "stylelint:fix": "stylelint --fix './src/**/*.scss' -q --config stylelint.config.js",
     "lint": "yarn stylelint:lint && yarn eslint:lint",
-    "fix": "yarn stylelint:fix && yarn eslint:fix"
+    "cs:fix": "yarn stylelint:fix && yarn eslint:fix"
   },
   "dependencies": {
     "clsx": "^1.1.1",

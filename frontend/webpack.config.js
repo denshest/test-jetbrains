@@ -82,10 +82,6 @@ module.exports = (env, argv) => {
             from: path.resolve(__dirname, 'src', 'public', 'images'),
             to: path.resolve(__dirname, 'build', 'images'),
           },
-          {
-            from: path.resolve(__dirname, 'src', 'public', 'data'),
-            to: path.resolve(__dirname, 'build', 'data'),
-          },
         ],
       }),
       new MiniCssExtractPlugin({
@@ -108,6 +104,7 @@ module.exports = (env, argv) => {
     },
     devServer: {
       contentBase: path.resolve(__dirname, './build'),
+      host: '0.0.0.0',
       port: 3000,
       historyApiFallback: true,
     },
