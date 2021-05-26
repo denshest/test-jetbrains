@@ -20,18 +20,22 @@
     "strictNullChecks": true,
     "strictFunctionTypes": false,
     "sourceMap": true,
+    "declaration": true,
     "noImplicitAny": true,
     "baseUrl": "src",
     "paths": {
+      "@/contexts/*": ["contexts/*"],
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
       "@/public/*": ["public/*"],
       "@/styles/*": ["styles/*"],
       "@/pages/*": ["pages/*"],
+      "@/types/*": ["types/*"],
     }
   },
   "include": [
-    "src"
+    "src",
+    "src/types/*.ts"
   ],
   "exclude": [
     "node_modules",
