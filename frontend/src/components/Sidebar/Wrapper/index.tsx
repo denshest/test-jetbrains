@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './Sidebar.module.scss';
 import Item from '@/components/Sidebar/Item';
 import { useTocData } from '@/contexts/TocDataContext';
 import LoadingPlaceholder from '@/components/Sidebar/Placeholder';
 
-const Sidebar: React.FC = (): JSX.Element => {
+const Sidebar: FC = (): JSX.Element => {
   const { data, isLoading } = useTocData();
 
   return (
