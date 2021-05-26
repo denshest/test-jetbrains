@@ -17,29 +17,38 @@ const Article: React.FC = (): JSX.Element => {
 
   return (
     <DefaultLayoutWithSidebar>
-      <h1 className={styles.heading}>
-        {page?.title}
-      </h1>
-      <div className={styles.content}>
-        <div>
-          <h3>
-            Page:
-          </h3>
-          <pre>
-            { JSON.stringify(page, undefined, 2) }
-          </pre>
-        </div>
-        { anchor && (
+      <article>
+        <header className={styles.header}>
+          <h1>
+            {page?.title}
+          </h1>
+          { anchor && (
+            <h2>
+              { anchor.title }
+            </h2>
+          ) }
+        </header>
+        <div className={styles.content}>
           <div>
             <h3>
-              Anchor:
+              Page:
             </h3>
             <pre>
-              { JSON.stringify(anchor, undefined, 2) }
+              { JSON.stringify(page, undefined, 2) }
             </pre>
           </div>
-        ) }
-      </div>
+          { anchor && (
+            <div>
+              <h3>
+                Anchor:
+              </h3>
+              <pre>
+                { JSON.stringify(anchor, undefined, 2) }
+              </pre>
+            </div>
+          ) }
+        </div>
+      </article>
     </DefaultLayoutWithSidebar>
   );
 };
