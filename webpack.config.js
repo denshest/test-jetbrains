@@ -80,7 +80,7 @@ module.exports = (env, argv) => {
         patterns: [
           {
             from: path.resolve(__dirname, 'src', 'public', 'images'),
-            to: path.resolve(__dirname, 'build'),
+            to: path.resolve(__dirname, 'build', 'images'),
           },
           {
             from: path.resolve(__dirname, 'src', 'public', 'data'),

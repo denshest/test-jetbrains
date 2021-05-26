@@ -1,4 +1,4 @@
-interface ITocPage {
+export interface ITocPage {
   id: string,
   title: string,
   url: string,
@@ -10,7 +10,7 @@ interface ITocPage {
   disqus_id: string,
 }
 
-interface ITocAnchor {
+export interface ITocAnchor {
   id: string,
   title: string,
   url: string,
@@ -20,7 +20,7 @@ interface ITocAnchor {
   disqus_id: string,
 }
 
-interface ITocData {
+export interface ITocData {
   entities: {
     pages: {
       [id: string]: ITocPage

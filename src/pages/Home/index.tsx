@@ -1,10 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { useTocData } from '@/contexts/TocDataContext';
 
 const Home: React.FC = (): JSX.Element => {
+  const tocData = useTocData();
+
   return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ipsa optio placeat vel voluptates! Aliquid aut, blanditiis commodi deleniti dolore dolorem eveniet libero, maiores omnis praesentium quisquam temporibus vel voluptas?
-    </div>
+    <Redirect to={{ pathname: tocData.data?.topLevelIds[0] }}/>
   );
 };
 
