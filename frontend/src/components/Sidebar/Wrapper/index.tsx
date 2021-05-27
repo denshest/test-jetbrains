@@ -13,7 +13,7 @@ const Sidebar: FC = (): JSX.Element => {
         { 
           isLoading 
             ? <LoadingPlaceholder/> 
-            : data && data.topLevelIds.map(id => (
+            : data?.topLevelIds.map(id => (
               <Item key={data.entities.pages[id].id} id={data.entities.pages[id].id} />
             ))
         }

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import DefaultLayout from '@/layouts/Default';
 import Sidebar from '@/components/Sidebar/Wrapper';
 import styles from './DefaultLayoutWithSidebar.module.scss';
 
 
-const DefaultLayoutWithSidebar: React.FC = ({ children }): JSX.Element => {
+const DefaultLayoutWithSidebar: FC = ({ children }): JSX.Element => {
   return (
     <DefaultLayout>
       <Sidebar/>

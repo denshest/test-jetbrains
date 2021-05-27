@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTocData } from '@/contexts/TocDataContext';
 import { useLocation, useParams } from 'react-router-dom';
 import DefaultLayoutWithSidebar from '@/layouts/DefaultWithSidebar';
 import NotFound from '@/pages/NotFound';
 import styles from './Article.module.scss';
 
-const Article: React.FC = (): JSX.Element => {
-  const { data, isLoading } = useTocData();
+const Article: FC = (): JSX.Element => {
+  const { isLoading, getPageById, getAnchorByHash } = useTocData();
   const { id } = useParams<{ id: string }>();
   const { hash } = useLocation();
 
-  const page = data?.entities.pages[id];
-  const anchor = hash && data && Object.values(data?.entities.anchors).find(item => item.anchor === hash);
+  const
+    page = getPageById(id),
+    anchor = hash && getAnchorByHash(hash)
+  ;
 
   if (!isLoading && !page) return <NotFound/>;
 

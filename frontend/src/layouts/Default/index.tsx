@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Header from '@/components/Header';
 
-const DefaultLayout: React.FC = ({ children }): JSX.Element => {
+const DefaultLayout: FC = ({ children }): JSX.Element => {
   return (
     <>
       <Header/>

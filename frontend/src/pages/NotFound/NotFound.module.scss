@@ -1,3 +1,5 @@
+@import '@/styles/common';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -14,8 +16,8 @@
 
 .link {
   padding: 12px 24px;
-  color: #fff;
-  background-color: #000;
+  color: $white;
+  background-color: $content;
   border-radius: 40px;
   transition: opacity .2s ease;
 

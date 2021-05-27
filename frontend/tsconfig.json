@@ -27,6 +27,7 @@
       "@/contexts/*": ["contexts/*"],
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
+      "@/lib/*": ["lib/*"],
       "@/public/*": ["public/*"],
       "@/styles/*": ["styles/*"],
       "@/pages/*": ["pages/*"],
