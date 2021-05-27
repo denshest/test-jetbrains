@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import '@/styles/main.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from '@/pages/Home';
 import { TocDataProvider } from '@/contexts/TocDataContext';
 import Article from '@/pages/Article';
 
-const App: React.FC = (): JSX.Element => {
+const App: FC = (): JSX.Element => {
   return (
     <TocDataProvider>
       <Router>

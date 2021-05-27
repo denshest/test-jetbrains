@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './SidebarPlaceholder.module.scss';
 
-const LoadingPlaceholder: React.FC = (): JSX.Element => (
+const LoadingPlaceholder: FC = (): JSX.Element => (
   <>
     <li className={styles.container}/>
     <li className={styles.container}/>

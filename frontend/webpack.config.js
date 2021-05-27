@@ -103,10 +103,15 @@ module.exports = (env, argv) => {
       extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss'],
     },
     devServer: {
-      contentBase: path.resolve(__dirname, './build'),
       host: '0.0.0.0',
       port: 3000,
       historyApiFallback: true,
+      static: [
+        path.resolve(__dirname, './build'),
+      ],
+      client: {
+        port: 9000,
+      },
     },
   };
 };
