@@ -48,7 +48,7 @@ const TocDataProvider: FC = (props) => {
 
           resolve(pages.filter(
             item => item.title.includes(search)).map(
-            item => ({ ...item, title: item.title.replaceAll(new RegExp(`(${search})`, 'gi'), '<em>$1</em>') })
+            item => ({ ...item, title: item.title.replace(new RegExp(`(${search})`, 'gi'), '<em>$1</em>') })
           ));
         }
       }, 500);
